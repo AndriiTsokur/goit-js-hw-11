@@ -1,14 +1,34 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
-  </head>
-  <body>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
-  </body>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Homework #11</title>
+
+	<!-- Google Fonts - START -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+	<!-- Google Fonts - END -->
+
+	<link rel="stylesheet" href="./sass/index.scss" />
+	<script type="module" src="./index.js"></script>
+</head>
+
+<body>
+	<!-- ❗️❗️❗️ Add partials like so for every page -->
+	<!-- <include src="./partials/example.html"></include> -->
+
+	<div class="form-wrapper">
+		<form class="search-form" id="search-form">
+			<input type="text" name="searchQuery" autocomplete="off" placeholder="Search images..." autofocus />
+			<button type="submit">Search</button>
+		</form>
+	</div>
+
+	<div class="gallery"></div>
+
+</body>
+
 </html>
