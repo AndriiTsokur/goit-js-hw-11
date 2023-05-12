@@ -28,7 +28,7 @@ function loadMore() {
 
 export default async function fetchQuery(query, startPage) {
 	apiOptions.q = query;
-	if (startPage) apiOptions.page = startPage;
+	if (startPage) apiOptions.page = 1;
 
 	try {
 		const result = await axios(API_URL, {
@@ -41,19 +41,20 @@ export default async function fetchQuery(query, startPage) {
 }
 
 function checkResult(result) {
-	if (result.data.hits.length === 0) showMessage('noMatches');
-	else if (apiOptions.page <= 1) {
+	if (result.data.hits.length === 0) {
+		showMessage('noMatches');
+		return;
+	}
+
+	if (apiOptions.page === 1) {
 		showMessage('success', result.data.totalHits);
+
+		if (result.data.totalHits > apiOptions.per_page) {
+			loadMoreBtnRef.classList.remove('hidden');
+		}
 	}
 
-	if (result.data.totalHits > apiOptions.per_page) {
-		loadMoreBtnRef.classList.remove('hidden');
-	}
-
-	if (
-		pictsCounter >= result.data.totalHits &&
-		!loadMoreBtnRef.classList.contains('hidden')
-	) {
+	if (apiOptions.page !== 1 && pictsCounter >= result.data.totalHits) {
 		loadMoreBtnRef.classList.add('hidden');
 		showMessage('limitReached');
 	}

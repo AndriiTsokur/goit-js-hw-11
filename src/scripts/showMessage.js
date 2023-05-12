@@ -4,6 +4,7 @@ const notifyOpts = {
 	width: '60%',
 	position: 'center-center',
 	clickToClose: true,
+	pauseOnHover: false,
 	fontSize: '18px',
 	cssAnimationStyle: 'zoom',
 	showOnlyTheLastOne: true,
