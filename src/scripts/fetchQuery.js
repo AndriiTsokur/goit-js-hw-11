@@ -50,7 +50,10 @@ function checkResult(result) {
 		loadMoreBtnRef.classList.remove('hidden');
 	}
 
-	if (pictsCounter >= result.data.totalHits) {
+	if (
+		pictsCounter >= result.data.totalHits &&
+		!loadMoreBtnRef.classList.contains('hidden')
+	) {
 		loadMoreBtnRef.classList.add('hidden');
 		showMessage('limitReached');
 	}
