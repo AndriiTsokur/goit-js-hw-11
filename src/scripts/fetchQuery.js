@@ -64,4 +64,17 @@ function checkResult(result) {
 
 	renderGalleryMarkup(result);
 	launchSimpleLightbox();
+
+	if (apiOptions.page !== 1) smoothScroll();
+}
+
+function smoothScroll() {
+	const { height: cardHeight } = document
+		.querySelector('.gallery')
+		.firstElementChild.getBoundingClientRect();
+
+	window.scrollBy({
+		top: cardHeight * 1.7,
+		behavior: 'smooth',
+	});
 }
