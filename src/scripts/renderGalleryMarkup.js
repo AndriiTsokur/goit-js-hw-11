@@ -1,9 +1,12 @@
 const galleryList = document.querySelector('.gallery');
 
 export default function renderGalleryMarkup({ data: { hits: pictures } }) {
-	galleryList.innerHTML = pictures.reduce(
-		(markupBundle, picture) => markupBundle + createCard(picture),
-		''
+	galleryList.insertAdjacentHTML(
+		'beforeend',
+		pictures.reduce(
+			(markupBundle, picture) => markupBundle + createCard(picture),
+			''
+		)
 	);
 }
 

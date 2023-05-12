@@ -101,7 +101,7 @@ p {
   height: 30px;
   padding-inline: 5px;
   border: none;
-  border-radius: 10px;
+  border-radius: 7px;
   text-align: center;
 }
 #search-form input::-webkit-input-placeholder {
@@ -124,15 +124,32 @@ p {
   font-weight: 300;
   text-align: center;
 }
-#search-form button {
-  min-width: 80px;
+
+button {
+  min-width: 100px;
+  height: 30px;
   padding: 0;
   border: none;
-  border-radius: 10px;
+  border-radius: 7px;
   font-weight: 400;
   line-height: 1;
   text-transform: uppercase;
   cursor: pointer;
+  -webkit-transition: color 250ms, background-color 250ms;
+  transition: color 250ms, background-color 250ms;
+}
+button:hover, button:focus {
+  color: rgba(0, 0, 0, 0.8);
+  background-color: #ffbe2f;
+}
+button.load-more {
+  display: block;
+  margin-block: 10px 30px;
+  margin-inline: auto;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+}
+button.load-more.hidden {
+  display: none;
 }
 
 body {

@@ -8,7 +8,7 @@ const notifyOpts = {
 	cssAnimationStyle: 'zoom',
 	showOnlyTheLastOne: true,
 	fontFamily: 'Roboto Condensed',
-	backOverlay: true,
+	// backOverlay: true,
 	warning: {
 		background: '#e69842',
 	},
@@ -33,6 +33,13 @@ export default function showMessage(reason, totalHits) {
 		case 'noMatches':
 			Notify.warning(
 				'Sorry, there are no images matching your search query. Please try again',
+				notifyOpts
+			);
+			break;
+
+		case 'limitReached':
+			Notify.info(
+				"We're sorry, but you've reached the end of search results",
 				notifyOpts
 			);
 			break;

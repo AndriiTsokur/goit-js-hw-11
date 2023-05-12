@@ -11,13 +11,27 @@ const apiOptions = {
 	orientation: 'horizontal',
 	safesearch: true,
 	per_page: 40,
+	page: 1,
 };
 
-export default async function fetchQuery(query) {
+const loadMoreBtnRef = document.querySelector('.load-more');
+let pictsCounter = apiOptions.page * apiOptions.per_page;
+
+loadMoreBtnRef.addEventListener('click', loadMore);
+
+function loadMore() {
+	apiOptions.page++;
+	pictsCounter += apiOptions.per_page;
+
+	fetchQuery(apiOptions.q);
+}
+
+export default async function fetchQuery(query, startPage) {
 	apiOptions.q = query;
+	if (startPage) apiOptions.page = startPage;
 
 	try {
-		const result = await axios.get(API_URL, {
+		const result = await axios(API_URL, {
 			params: apiOptions,
 		});
 		checkResult(result);
@@ -28,7 +42,18 @@ export default async function fetchQuery(query) {
 
 function checkResult(result) {
 	if (result.data.hits.length === 0) showMessage('noMatches');
-	else showMessage('success', result.data.totalHits);
+	else if (apiOptions.page <= 1) {
+		showMessage('success', result.data.totalHits);
+	}
+
+	if (result.data.totalHits > apiOptions.per_page) {
+		loadMoreBtnRef.classList.remove('hidden');
+	}
+
+	if (pictsCounter >= result.data.totalHits) {
+		loadMoreBtnRef.classList.add('hidden');
+		showMessage('limitReached');
+	}
 
 	renderGalleryMarkup(result);
 	launchSimpleLightbox();
