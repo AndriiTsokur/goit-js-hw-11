@@ -9,7 +9,6 @@ const notifyOpts = {
 	cssAnimationStyle: 'zoom',
 	showOnlyTheLastOne: true,
 	fontFamily: 'Roboto Condensed',
-	// backOverlay: true,
 	warning: {
 		background: '#e69842',
 	},

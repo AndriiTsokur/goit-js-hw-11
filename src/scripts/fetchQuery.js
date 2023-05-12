@@ -15,7 +15,7 @@ const apiOptions = {
 };
 
 const loadMoreBtnRef = document.querySelector('.load-more');
-let pictsCounter = apiOptions.page * apiOptions.per_page;
+let pictsCounter = null;
 
 loadMoreBtnRef.addEventListener('click', loadMore);
 
@@ -28,7 +28,10 @@ function loadMore() {
 
 export default async function fetchQuery(query, startPage) {
 	apiOptions.q = query;
-	if (startPage) apiOptions.page = 1;
+	if (startPage) {
+		apiOptions.page = 1;
+		pictsCounter = apiOptions.per_page;
+	}
 
 	try {
 		const result = await axios(API_URL, {
