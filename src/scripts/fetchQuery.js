@@ -74,7 +74,7 @@ function smoothScroll() {
 		.firstElementChild.getBoundingClientRect();
 
 	window.scrollBy({
-		top: cardHeight * 1.7,
+		top: cardHeight * 2,
 		behavior: 'smooth',
 	});
 }
