@@ -11,7 +11,6 @@ export default function handleSubmit(e) {
 
 function prepareStage(e) {
 	e.preventDefault();
-	e.currentTarget.elements.searchQuery.blur();
 	galleryList.innerHTML = '';
 	loadMoreBtnRef.classList.add('hidden');
 }
