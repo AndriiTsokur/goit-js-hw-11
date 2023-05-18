@@ -1,8 +1,12 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
+let lightbox;
+
 export default function launchSimpleLightbox() {
-	const lightbox = new SimpleLightbox('.gallery a', {
+	if (lightbox) lightbox.destroy();
+
+	lightbox = new SimpleLightbox('.gallery a', {
 		overlayOpacity: 0.85,
 	});
 
